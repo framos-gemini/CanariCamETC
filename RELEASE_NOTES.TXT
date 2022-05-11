@@ -1,0 +1,14 @@
+## Copyright (c) 2007 Gran Telescopio de Canarias, S.A. (GRANTECAN)
+## All Rights Reserved
+
+	RELEASE NOTES r5.0
+
+Interface
+  	
+Bugs
+
+Implementation
+
+	Exposoure Time Calculator of CanariCam instrument.
+	
+Known Errors

@@ -1,0 +1,804 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>CC ITC Astronomical Source Definition</title>
+		<link rel="shortcut icon" href="../images/gtcicon.png">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	    <meta name="description" content="">
+	    <meta name="author" content="">
+		<script src="../jQuery/jquery-2.1.0.js" type="text/javascript"></script>
+		<link href="../jQuery/css/jquery.jscrollpane.css" rel="stylesheet">
+		<link href="../jQuery/bootstrap/docs/assets/css/bootstrap.css" rel="stylesheet">
+		<link href="../jQuery/bootstrap/docs/assets/css/bootstrap-responsive.css" rel="stylesheet">
+		<!-- <link href="../jQuery/css/jquery.jscrollpane.css" rel="stylesheet"> -->
+		<link href="../jQuery/bootstrap/docs/base-css.html" rel="stylesheet">    
+	    <script src="../jQuery/jscrollpane/jquery.mousewheel.js"></script>
+	    <script src="../jQuery/jscrollpane/jquery.jscrollpane.js"></script>
+	    <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=AM_HTMLorMML-full"></script>
+		<link href="../jQuery/css/customer.css" rel="stylesheet">
+		<!-- <script src="../jQuery/ASCIIMathML.js"></script>  -->  
+		
+		<style type="text/css">
+			.indexMov{				
+				display	:inline;/*IE6*/
+				float	:left;
+				position:fixed;
+				width	: 100%;/*can be % px auto*/
+				z-index	:200;
+			}
+			
+			.scroll-pane
+			{
+				width: 100%;
+				height: 100px;
+				overflow: auto;
+			}
+			
+		</style>
+		
+		<script language="javascript">
+			function getCenterScreenToElement(element) {
+				var pageWidth = $(window).scrollTop() + ( ($(window).height() / 2) - ($("#"+element).height() / 2));
+				var pageHeight = $("body").width() - $("#"+element).width();
+				
+				if (isNaN(pageWidth)) {
+				      if (document.compatMode == "CSS1Compat") {
+				            pageWidth = document.documentElement.clientWidth;
+				            pageHeight = document.documentElement.clientHeight;
+				      } 
+				      else {
+				            pageWidth = document.body.clientWidth;
+				            pageHeight = document.body.clientHeight;
+				      }
+			      } 
+				return [pageWidth,pageHeight];
+			}
+			
+			function updateIndexMov () {
+				$("#indexMov").width($("#indexMov").parent().width());
+				if ($("#indexMov .nav-tabs").height() > $(window).height() - $(".headerWeb").height())
+					$("#indexMov").height($(window).height() - $(".headerWeb").height());
+				else
+					$("#indexMov").height($("#indexMov .nav-tabs").height() + 20);
+				$('.scroll-pane').jScrollPane({
+					showArrows: true			
+				});
+			}
+			
+			$( document ).ready(function() {
+				$(".aShowImage").on("click", function(event) {
+					var sizePages = getCenterScreenToElement("bg");
+					console.log("size Element: " + $(this).height());
+					$("#bg").show();
+					var closeButton = $("<a class='aShowImage'><span class='close_button'>X</span></a>");
+					$(closeButton).on("click",function(event) {
+						$("#bg").hide();
+					});
+					
+					$("#bg").html(closeButton);
+					
+					var divInner = $("<div id=\"bgInner\" class=\"popup\"></div>");
+					$(divInner).append("<img class='imgInner' src=\""+$(this).attr("value")+"\" ></img>");
+					$("#bg").append(divInner);
+					$("#bg").css("top",sizePages[0]);
+					$("#bg").css("left",sizePages[1]);
+				});
+				
+				$(".aDownload").on("click", function(event){
+					window.open($(this).attr("value"),'File'+$(this).text(),'toolbar=1,scrollbars=1,location=1,statusbar=1,menubar=1,resizable=1,width=800,height=600');
+				});
+	
+				$(".indexHelp").on("click", function (e) {
+					console.log("index anchor");
+				});
+				
+				$('.indexMov').each(function(){	
+					console.log("Top: " + $(window).scrollTop());
+					console.log("HeaderWeb: "+ $(".headerWeb").outerHeight());
+					$(this).css('top',(0 + $(".headerWeb").outerHeight()) +'px');
+					$(this).css('width',$(".span3").outerWidth());
+				});
+				
+				updateIndexMov();
+				
+				$(window).resize (function () {
+					$('.scroll-pane').data('jsp').destroy();
+					updateIndexMov();
+				});
+				
+				//$('.scroll-pane').width($('.indexMov').width());
+			});
+			
+			
+		</script>	
+			
+	</head>
+
+	<body>
+		<div class="headerWeb jumbotron">
+			<h1 class="header">CanariCam ETC Help</h1>
+		</div>
+		<div class="container-fluid">
+			<div class="row-fluid">
+				<div class="span3">
+					<div id="indexMov" class="indexMov scroll-pane degradateBackgroundIndex">
+							<ul class="nav nav-tabs">
+								<li><a class="indexHelp" href="#sourceDefinition" >Astronomical Source Definition</a>
+									<ul>
+										<li><a  href="#spatialProfile" >Spatial profile</a></li>
+										<li><a  href="#sourceBrightness" >Source Brightness</a></li>
+										<li><a  href="#mag">mag</a></li>
+										<li><a  href="#ABmag" >AB mag</a></li>
+										<li><a  href="#Jy" >Jy</a></li>
+										<li><a  href="#Wm2mm">W / `m^2` / mm </a></li>
+										<li><a  href="#ergsscm2hz">ergs / s / `cm^2` Hz</a>	</li>
+										<li><a  href="#ergsscm2">ergs/s/`cm^2` Angstrom </a></li>
+										<li><a  href="#specialDistribution">Special Distribution</a></li>
+										<li><a  href="#librarySpectra">Library spectra</a></li>
+										<li><a  href="#modelEmissionLine">Model emission line and continuum</a></li>
+										<li><a  href="#userDefinedSpectrum">User-defined spectrum</a></li>
+									</ul>
+								</li>
+								<li><a class="indexHelp" href="#calcMethodAndAnalysis">Calculation Method and Analysis</a>
+									<ul>
+										<li><a href="#calcMethod">Calculation Method</a></li>
+										<li><a href="#analysisMethod">Analysis Method</a></li>
+									</ul>
+								</li>
+								<li> <a class="indexHelp" href="#obsCondConstrains">Observing conditions constraints</a> 
+									<ul>
+										<li><a href="#imgQuality">Image Quality </a></li>
+										<li><a href="#skytransparency">Sky transparency (cloud cover) </a>
+										<li><a href="#skytransWaterVapor">Sky transparency (water vapor) </a></li>
+										<li><a id="skyairmas" href="#skyAirmas">Airmass</a></li>
+									</ul>
+								</li>
+								<li> <a class="indexHelp" href="#instTelesConfig">Instrument and Telescope Configuration</a> 
+									<ul>
+										<li><a href="#opticalProp">Optical Properties</a></li>
+										<li><a href="#detectorProp">Detector Properties</a>
+										<li><a href="#SpectroscopicResolution">Spectroscopic Resolution and Sampling</a></li>
+									</ul>
+								</li>
+								
+							</ul>
+						</div>
+					
+				</div>
+				<div class="span9 bodyText">
+				 		<a id="sourceDefinition"> </a>	
+						<h2>Astronomical Source Denifinion Help</h2>
+						<a id=spatialProfile></a>
+						<h3>Spatial profile</h3>
+						<p>
+							The astronomical target may be a point or an extended source.
+							The nominal point source has a size defined by the image quality constraint and air mass (selected as part of the observing conditions), the wavelength 
+							(selected by the color filter or dispersive element as part of the instrument properties). The adopted extent of the point source (in arcsec) is reported 
+							in the ITC results. 
+						</p>
+						<a id="sourceBrightness"> </a>	
+						<h3>Source brightness and units</h3>
+						<p> 
+							The source flux density or, for uniform extended sources, surface brightness are specified in familiar astronomical units available via the pull-down menus. 
+							The source brightness is converted into the ITC internal units of photons/s/`m^2`/nm (optionally, per square arcsec) using the relationships described below. 
+							The source brightness can be specified at a wavelength that is not the observing wavelength provided that the chosen (redshifted) spectrum extends across 
+							the entire wavelength range of interest (e.g. that defined by the colour filter). 
+						</p>
+						
+						<a id="mag"> </a>	
+						<h3>mag</h3>
+						<p>Zero points giving continuum photons/s/`m^2`/nm for a zero magnitude source are assumed to be:
+						<table class="tableFormat">
+							<thead>
+								<tr>
+									<td>System</td>
+									<td>Filter</td>
+									<td>`lambda`(um)</td>
+									<td>`delta``lambda`(um) </td>
+									<td>Zero point photons/s/`m^2`/nm</td>
+								</tr>
+							</thead>
+							<tbody>
+							<tr>
+								<td ROWSPAN=5 style="background-color:white" > Bessel</td>
+								<td>U</td>
+								<td>0.3605</td>
+								<td> 0.1143</td>
+								<td> 7.55E+07</td>
+							</tr>
+							<tr>
+								<td>B</td>
+								<td>0.4400</td>
+								<td>0.1800</td>
+								<td>1.37E+08</td>
+							</tr>
+							<tr>
+								<td>V</td>
+								<td>0.5512</td>
+								<td>0.2142</td>
+								<td>9.80E+07</td>
+							</tr>
+							<tr>
+								<td> R</td>
+								<td>0.6586</td>
+								<td>0.3329</td>
+								<td>6.81E+07</td>
+							</tr>
+							<tr>
+								<td> I</td>
+								<td> 0.806</td>
+								<td> 0.2125</td>
+								<td> 4.50E+07</td>
+							</tr>
+							<tr>
+								<td ROWSPAN=5 style="background-color:white" > Sloan</td>
+								<td> u</td>
+								<td> 0.3562</td>
+								<td> 0.098</td>
+								<td> 6.65E+07</td>
+							</tr>
+							<tr>
+								<td> g</td>
+								<td> 0.4719</td>
+								<td> 0.1766</td>
+								<td> 1.27E+08</td>
+							</tr>
+							<tr>
+								<td> r</td>
+								<td> 0.6185</td>
+								<td> 0.1574</td>
+								<td> 7.72E+07</td>
+							</tr>
+							<tr>
+								<td>i</td>
+								<td> 0.7500</td>
+								<td> 0.1400</td>
+								<td> 5.24E+07</td>
+							</tr>
+							<tr>
+								<td> z</td>
+								<td> 0.8961</td>
+								<td> 0.2873</td>
+								<td> 3.78E+07</td>
+							</tr>
+							<tr>
+								<td ROWSPAN=3 style="background-color:white" > CTIO</td>
+								<td> J</td>
+								<td> 1.2466</td>
+								<td> 0.1972</td>
+								<td> 1.90E+07</td>
+							</tr>
+							<tr>
+								<td> H</td>
+								<td> 1.6312</td>
+								<td> 352.7</td>
+								<td> 9.67E+06</td>
+							</tr>
+							<tr>
+								<td> K</td>
+								<td> 2.1426</td>
+								<td> 353.8</td>
+								<td> 4.77E+06</td>
+							</tr>
+							<tr>
+								<td ROWSPAN=3 style="background-color:white" > 2MASS</td>
+								<td> J</td>
+								<td> 1.2350</td>
+								<td> 326.2</td>
+								<td> 1.95E+07</td>
+							</tr>
+							<tr>
+								<td> H</td>
+								<td> 1.6662</td>
+								<td> 344.4</td>
+								<td> 9.28E+06</td>
+							</tr>
+							<tr>
+								<td> Ks</td>
+								<td> 2.1590</td>
+								<td> 400.8</td>
+								<td> 4.66E+06</td>
+							</tr>
+							<tr>
+								<td ROWSPAN=2 style="background-color:white" > Subaru/IRCS</td>
+								<td> L'</td>
+								<td> 3.7742</td>
+								<td> 919.7</td>
+								<td> 9.93E+05</td>
+							</tr>
+							<tr>
+								<td> M'</td>
+								<td> 4.6803</td>
+								<td> 378.6</td>
+								<td> 5.31E+05</td>
+							</tr>
+							<tr>
+								<td ROWSPAN=4 style="background-color:white" > Spitzer/IRAC</td>
+								<td> I1</td>
+								<td> 3.5573</td>
+								<td> 831.8</td>
+								<td> 1.18E+06</td>
+
+							</tr>
+							<tr>
+								<td> I2</td>
+								<td> 4.5049</td>
+								<td> 1138.8</td>
+								<td> 6.00E+05</td>
+							</tr>
+							<tr>
+								<td> I3</td>
+								<td> 5.7386</td>
+								<td> 1.6106</td>
+								<td> 2.99E+05</td>
+							</tr>
+							<tr>
+								<td> I4</td>
+								<td> 7.9274</td>
+								<td> 3288.2</td>
+								<td> 1.18E+05</td>
+							</tr>
+							<tr>
+								<td ROWSPAN=4  style="background-color:white"> WISE</td>
+								<td> W1</td>
+								<td> 3.3526</td>
+								<td> 1118.3</td>
+								<td> 1.39E+06</td>
+							</tr>
+							<tr>
+								<td> W2</td>
+								<td> 4.6028</td>
+								<td> 1378.1</td>
+								<td> 5.63E+05</td>
+							</tr>
+							<tr>
+								<td> W3</td>
+								<td> 11.5608</td>
+								<td> 9818.3</td>
+								<td> 4.14E+04</td>
+							</tr>
+							<tr>
+								<td> W4</td>
+								<td> 22.0883</td>
+								<td> 8390.6</td>
+								<td> 5.74E+03</td>
+							</tr>
+							<tr>
+								<td ROWSPAN=2 style="background-color:white" > Gemini/T-ReCS</td>
+								<td> N</td>
+								<td> 10.3113</td>
+								<td> 5947.9</td>
+								<td> 5.58E+04</td>
+							</tr>
+							<tr>
+								<td> Q</td>
+								<td> 21.4252</td>
+								<td> 12667</td>
+								<td> 6.27E+03</td>
+							</tr>
+							</tbody>
+						</TABLE>
+						
+						</p>
+						
+						<p>
+							These values were derived from the CIT system used in the STScI units conversion tool (UBVRI) and Cohen et al. (1992. AJ, 104, 1650; JHKL'M' from Vega and Sirius for 10 and 20um).
+						</p>
+						
+						<a id="ABmag"> </a>	
+						<h3>AB mag</h3>
+						<p>The photon flux density (in photons/s/nm/`m^2` as a function of the source brightness in AB magnitudes is given by:
+							<p class="parragraphForm">`"photon flux density" = (5.636 * 10^10 / lambda) *  10^(-0.4 cdot AB_{mag}`, 
+							  where l is the wavelength in nm. 
+							</p>
+							<p>
+								This is equivalent to the formal definition in Oke & Gunn (1983. ApJ, 266, 713).
+							</p>
+						</p>
+						<a id="Jy"> </a>	
+						<h3>Jy</h3>
+						<p>The photon flux density (in  `"photons"`/`s`/`"nm"`/`m^2`) as a function of the source brightness (S) in Jy (i.e. `10^-26` W/`m^2`/ Hz ) is given by:
+							<p class="parragraphForm">
+								`"photon flux density" = S * ( 1.509 * 10^7) / lambda`
+							</p>
+						</p>
+						<a id="Wm2mm"> </a>	
+						<h3><math xmlns="http://www.w3.org/1998/Math/MathML"1 display="inline"> 
+								<mrow>
+									<mtext>W/</mtext>
+										<msup><mtext>m</mtext><mtext>2</mtext></msup>
+									<mtext>/mm</mtext>
+								</mrow>
+							</math>
+						</h3>
+						<p>	The photon flux density (in 
+							<math xmlns="http://www.w3.org/1998/Math/MathML"1 display="inline"> 
+								<mrow>
+									<mtext>photons/s/nm/</mtext>
+									<msup><mi>m</mi><mi>2</mi></msup>
+								</mrow>
+							</math>) as a function of the source brightness (S) in W/m^2/um is given by:
+							<p class="parragraphForm">`"photon flux density" = S * ( lambda / (1.988 * 10^-13))`, where lambda is the wavelength in nm.
+							</p>
+						</p>
+						<a id="ergsscm2"> </a>	
+						<h3> <math xmlns="http://www.w3.org/1998/Math/MathML"1 display="inline"> 
+							 <mrow>
+								<mtext>ergs/s/</mtext>
+									<msup><mi>cm</mi><mi>2</mi></msup>
+								<mtext>Angstrom</mtext>
+								</mrow>
+							</math></h3>
+						<p>
+							The photon flux density (in 
+							<math xmlns="http://www.w3.org/1998/Math/MathML"1 display="inline"> 
+								<mrow>
+									<mtext>photons/s/nm/</mtext>
+									<msup><mi>m</mi><mi>2</mi></msup>
+								</mrow>
+							</math> 
+							)as a function of the source brightness (S) in ergs/s/cm^2/Angstrom is given by:
+							<p class="parragraphForm">`"photon flux density" = S * ( lambda / (1.988 * 10^-14))`, where lambda is the wavelength in nm. 
+							</p>
+							
+						</p>
+						<a id="ergsscm2hz"> </a>	
+						<h3><math xmlns="http://www.w3.org/1998/Math/MathML"1 display="inline"> 
+								<mrow>
+									<mtext>ergs/s/</mtext>
+									<msup><mtext>cm</mtext><mtext>2</mtext></msup>
+									<mtext>Hz</mtext>
+								</mrow>
+							</math>
+						</h3>
+						<p>
+							The photon flux density (in 
+							<math xmlns="http://www.w3.org/1998/Math/MathML"1 display="inline"> 
+								<mrow>
+									<mtext>photons/s/nm/</mtext>
+									<msup><mi>m</mi><mi>2</mi></msup>
+								</mrow>
+								</math>) as a function of the source brightness (S) in ergs/s/cm^2/Hz is given by:
+							<p class="parragraphForm"> `"photon flux density" = S * (1.509 * 10^30 / lambda)` , where lambda is the wavelength in nm. </p>
+								
+						</p>
+						<a id="specialDistribution"> </a>	
+						<h3>Spectral distribution</h3>
+						<p>
+							The source spectrum is selected from the available libraries of stellar and non-stellar spectra, model emission line + continuum, and black body, power law and user-defined spectra.  The spectrum may be redshifted by an arbitrary amount. If the selected (redshifted) spectrum does not completely cover the observing wavelength range, as defined by the colour filter or dispersive element, either an error is reported by the ITC or the spectrum is padded with leading or trailing zeros.
+							<p>
+							For spectroscopic calculations, the source spectrum is smoothed to the resolution of the spectrograph as given by the dispersing element with an entrance aperture defined by the slit width, or source extent if narrower (some exceptions are noted for specific instruments). Note that the stellar and non-stellar libraries may have an intrinsic resolution less than that of the instrument or a coarser sampling. In all cases they are re-sampled to the appropriate dispersion within the ITC.
+					The sky transmission and sky background spectra employed currently have a resolution of ~1nm and sampling of ~0.5nm. Hence at higher instrument spectral resolutions, the sky lines will not be treated correctly.
+							</p> 
+						</p>
+						<a id="librarySpectra"> </a>	
+						<h3>Library spectra</h3>
+						<p> The following spectra are currently available:	
+							<ul id="spectra">
+								<li><span><b>Planetary nebula (NGC7027) </b> - Look at <a class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/Planetary-nebula-NGC7027.png" >Planetary nebula (NGC7027)</a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/Planetary-nebula-NGC7027.nm">file</a></span> </li>
+								<li><span><b>Starburst galaxy (M82)</b> - Look at  <a  class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/Starburst-galaxy.png" >Starburst galaxy (M82) </a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/Starburst-galaxy.nm">file</a></span> </li>
+								<li><span><b>Pre-main sequence star (HD100546)  </b> - Look at <a class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/PMS-star.png" >HD100546</a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/PMS-star.nm">file</a></span> </li>
+								<li><span><b>Galactic Center </b> - Look at <a  class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/Galactic-center.png" >Galactic center</a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/Galactic-center.nm">file</a></span> </li>
+								<li><span><b>AFGL230 (M10II star with Silicate absorption)  </b> - Look at <a  class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/afgl230.png" >AFGL230 (M10II star with Silicate absorption)</a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/afgl230.nm">file</a></span> </li>
+								<li><span><b>AFGL3068 (Late N-type star, optically thick carbon based dust) </b> - Look at <a id="aPopup1" class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/afgl3068.png" >AFGL3068 (Late N-type star, optically thick carbon based dust</a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/afgl3068.nm">file</a></span> </li>
+								<li><span><b>Alpha Boo (K1.5III star) </b> - Look at <a  class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/alphaboo.png" >Alpha Boo (K1.5III star)</a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/alphaboo.nm">file</a></span> </li>
+								<li><span><b>Alpha Car (F0II star) </b> - Look at <a  class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/alphacar.png" >Alpha Car (F0II star)</a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/alphacar.nm">file</a></span> </li>
+								<li><span><b>Beta And (M0IIIa star) </b> - Look at <a  class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/betaand.png" >Beta And (M0IIIa star)</a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/betaand.nm">file</a></span> </li>
+								<li><span><b>Beta Gru (M5III star) </b> - Look at <a class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/betagru.png" >>Beta Gru (M5III star)</a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/betagru.nm">file</a></span> </li>
+								<li><span><b>Gamma Cas (B0IVe star) </b> - Look at <a class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/gammacas.png" >Gamma Cas (B0IVe star)</a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/gammacas.nm">file</a></span> </li>
+								<li><span><b>Gamma Dra (K5III star) </b> - Look at <a class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/gammadra.png" >Gamma Dra (K5III star)</a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/gammadra.nm">file</a></span> </li>
+								<li><span><b>L1551 IRS (Young Stellar Object)  </b> - Look at <a class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/l1551irs.png" >L1551 IRS (Young Stellar Object) </a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/l1551irs.nm">file</a></span> </li>
+								<li><span><b>NGC 1068 (Dusty active galaxy)  </b> - Look at <a class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/ngc1068.png" >NGC 1068 (Dusty active galaxy) </a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/ngc1068.nm">file</a></span> </li>
+								<li><span><b>NGC2023 (Reflection Nebula)  </b> - Look at <a class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/ngc2023.png" >NGC2023 (Reflection Nebula) </a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/ngc2023.nm">file</a></span> </li>
+								<li><span><b>NGC2440 (Line dominated PN)  </b> - Look at <a class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/ngc2440.png" >NGC2440 (Line dominated PN) </a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/ngc2440.nm">file</a></span> </li>
+								<li><span><b>O Cet (M7IIIa Star with silicate emission)  </b> - Look at <a class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/ocet.png" >O Cet (M7IIIa Star with silicate emission) </a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/ocet.nm">file</a></span> </li>
+								<li><span><b>Orion Bar (Dusty HII region)  </b> - Look at <a class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/orionbar.png" >Orion Bar (Dusty HII region) </a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/orionbar.nm">file</a></span> </li>
+								<li><span><b>RScl (N-type Dusty Carbon Star, SiC emission)  </b> - Look at <a class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/rscl.png" >RScl (N-type Dusty Carbon Star, SiC emission) </a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/rscl.nm">file</a></span> </li>
+								<li><span><b>TXPsc (N-type Visible Carbon Star)  </b> - Look at <a class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/txpsc.png" >TXPsc (N-type Visible Carbon Star) </a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/txpsc.nm">file</a></span> </li>
+								<li><span><b>WR 104 (Wolf-Rayet Star + dust)  </b> - Look at <a class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/wr104.png" >WR 104 (Wolf-Rayet Star + dust) </a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/wr104.nm">file</a></span> </li>
+								<li><span><b>WR 34 (Wolf-Rayet Star) </b> - Look at <a class="aShowImage" value="/itc/servlet/getfile?filename=/sed/fileplots/wr34.png" >WR 34 (Wolf-Rayet Star) </a> or download <a id="aDownload" class="aDownload" value="/itc/servlet/getfile?filename=/sed/non_stellar/wr34.nm">file</a></span> </li>
+							</ul>
+						</p>
+						<a id="modelEmissionLine"> </a>
+						<h3>Model emission line and continuum</h3>
+						<p>
+							This generates a Gaussian emission line on top of a flat (per wavelength interval) continuum. 
+							The specified line flux and continuum flux density override the brightness normalization defined 
+							as part of the spatial profile. 
+						</p>
+						<a id="userDefinedSpectrum"> </a>
+						<h3>User-defined spectrum</h3>
+						<p>
+							User-defined source spectra can be used instead of the existing template and model SEDs. 
+							Note the following restrictions on file format:
+							<ul>
+								<li>Two space-separated columns: (1) wavelength in nm (2) flux density in arbitrary units. 
+								     Files can have any number of comment lines, each starting with the # character, and any 
+								     number of blank lines. 
+								</li>
+								<li>Wavelength interval need not be uniform.</li>
+								<li>Flux density must be in wavelength units (e.g. per nm or per um, but not per Hz).</li>
+								<li>Wavelength range must extend to include the requested normalization filter (or wavelength). 
+								    For example, a user-defined spectrum for T-ReCS must extend to below 2000nm if the source 
+								    brightness is defined in the K-band. 
+								</li>
+								<li>File size must be less than 1MB. </li>
+								<li>File name must end in .txt </li>
+							</ul> 
+						</p>
+						<a id="calcMethodAndAnalysis"> </a>
+						<h2>Calculation Method and Analysis</h2>
+						
+						<a id="calcMethod"> </a>
+						<h3>Calculation Method</h3>
+						<p>
+							There are two modes available: 
+							<ol>
+								<li>Calculate the total signal-to-noise ratio (S/N) for an observation with the specified exposure time, number of exposures and sky subtraction method. </li>
+								<li>Calculate the total integration time to achieve the requested S/N for an observation with the specified exposure time and sky subtraction method. </li>
+							</ol>
+						</p>
+						<p>
+							As the S/N can vary markedly with wavelength, particular in the infrared, only the former mode is available for spectroscopic calculations.
+						</p>
+						<p>
+							The Integration Time Calculator reports the total signal and noise for a single exposure and the signal-to-noise ratio (S/N) for a single exposure and for
+							the whole observation. In general, the theoretical S/N (reported by the ITC as the "intermediate S/N") for a single exposure is not achievable because 
+							it is necessary to perform sky or background subtraction.
+						</p>
+						<p>
+							The ITC uses an approximation that each on-source exposure measures both signal and noise and that the process of background subtraction adds another 
+							contribution of noise. (This is a generally applicable case; it can be shown that this approximation is within 0.5 to `sqrt 3` of other approaches 
+							to background subtraction). In this case the final S/N is:
+							<p class="parragraphForm">
+							    `"final S/N" = (sqrt{"number of on-source exposures"} times signal) / {sqrt{signal + 2 times ("sourceless noise")^2}`							    
+							</p>
+							
+						</p>
+						<p>
+							where "aperture ratio" is (1 + "source aperture area" / "sky aperture area"). The ""sourceless noise" is defined as the (quadratic) 
+							combination of background, readout and dark current noise:
+							<p class="parragraphForm">
+								`"sourceless noise" = sqrt{var(background) + var(readout) + var(dark)}` 
+							</p>
+						</p>
+						
+						<p>
+							Several examples should clarify the behaviour of this algorithm. In each case we assume that the source is faint so that the observation
+							 is (sky + telescope) background noise limited and set the aperture ratio to 2.
+							 <ol>
+							 	<li>Let the total number of exposures be 4 all of which are on-source, i.e the chop/nod throw is within the detector and we use 
+							 		the positive and negative images of the target. The on-source integration time is 4t. The final S/N is sqrt(2) better than 
+							 		an observation with 2 exposures (integration time 2t) as we have doubled the on-source integration time. 
+							 	</li>
+							 	<li>
+							 		Let the total number of exposures be 4 but only 2 of which are on-source, i.e. we are chopping and nodding off-chip and 
+							 		can only use the positive images of the target. The on-source integration time is 2t. The final S/N is sqrt(2) worse 
+							 		than case (1) and the same as an observation with 2 on-source exposures.
+							 	</li>
+							 </ol> 
+						</p>
+							
+						<a id="analysisMethod"> </a>
+						<h3>Analysis Method</h3>
+						<p>
+							In both imaging and spectroscopy modes the signal and total noise is calculated within a software aperture optimized to yield 
+							the best S/N ratio or within an aperture specified by the user. The 'optimum' aperture differs slightly for bright and faint 
+							sources (i.e. it depends on the dominant source of noise) but an effective compromise over a wide range of source brightness
+							is `1.18 xx FWHM` for imaging a point source. This aperture contains 61% of the total signal for the assumed Gaussian PSF. 
+						</p>
+						<p>
+							In the case of a uniform surface brightness (USB) source the "optimum" aperture simply defaults to an area of one square arcsec. 
+							Depending on the dominant source of noise, larger apertures will typically give higher S/N in the USB case.
+						</p>
+						<p>
+							For spectroscopy, the equivalent length integrated along the slit that yields the best S/N ratio would be `1.4 xx FWHM` for a Gaussian PSF. 
+							For computational simplicity, the ITC rounds this length to an integer number of pixels.
+						</p>
+						<p>
+							When calculating the area enclosed by the software aperture in the imaging case, the minimum is 9 pixels.
+						</p>
+						
+						<p>
+							The ITC results page reports the aperture used by the software, the fraction of the source flux it contains 
+							and the source more background signal in the peak pixel.
+						</p>
+						
+						<a id="obsCondConstrains"> </a>
+						<h2>Observing Conditions Constraints</h2>
+						<p>
+							The observing condition constraints define the poorest conditions under which a queue-scheduled observation should be executed and indicate 
+							the conditions that can be expected by classically-scheduled observers. For image quality, sky transparency and background the variation in 
+							these conditions is represented by a percentile indicating the frequency of occurrence of the specific property. Observing constraints are specified 
+							in terms of these <b> percentiles </b> e.g. (best) 20%-ile, 50%-ile (better than median) etc. Within the ITC, the selected constraint determines which
+							of several input files are loaded to define the sky transmission and emission, and the image size adopted for the nominal point source. 
+							In the following text we show a detailed translation between <b> frequency of occurrence </b> (the %-ile bin) and <b>physical property</b>, 
+							which is a function of observing wavelength and zenith distance of the source. 
+							
+						</p>
+						<a id="imgQuality"> </a>
+						<h3>Image quality</h3>
+						<p> 
+							The delivered image quality (not simply the seeing) is affected by many parameters including atmospheric properties (e.g. coherence length and time, scale length), 
+							wind speed and direction, guide star brightness and relative distance from target and observing wavelength. <b>The tabulated values of image quality assume zenith pointing</b>. 
+							As a first approximation, used in the ITC, the image size increases with air mass to the 3/5 power e.g. it is 50% larger at `"air mass" = 2`.
+							
+							<table class="border tableFormat" style="width: 80%; margin-left: auto; margin-right: auto;">
+								<thead>
+									<tr style="background: rgb(0, 63, 160); color:#FFFFFF">
+										<th rowspan="2">Wavelength</th>
+										<th colspan="4">Constraint</th>
+									</tr>
+									<tr style="background: rgb(0, 63, 160); color:#FFFFFF">
+										<th>20%-ile</th>
+										<th>70%-ile</th>
+										<th>85%-ile</th>
+										<th>any (100%-ile)</th>
+									</tr>
+								</thead>
+								<tbody>
+									<tr>
+										<td>Si2 (8.7 `mu`m)</td>
+										<td>0.28</td>
+										<td>0.35</td>
+										<td>0.49</td>
+										<td>0.86</td>
+									</tr>
+									<tr>
+										<td>Q1 (17.65 `mu`m)</td>
+										<td>0.43</td>
+										<td>0.47</td>
+										<td>0.58</td>
+										<td>1.06</td>
+									</tr>
+								</tbody>
+							</table>
+						</p>
+						<p>
+							Example interpretation of the table: An image at 10 µm of a target at zenith would be expected to have a profile full width at half maximum of no more than 0.34 arcsec 20% 
+							of the time and no more than 0.37 arcsec 70% of the time. 
+						</p>
+						<p>
+							Image quality at Gemini South has been measured to be within `~10%, (~20%), (~50%)` of the theoretical diffraction limit `20%(70%)(85%)` of the time in the 10 µm atmospheric window 
+							and within 10% of the diffraction limit 85% of the time in the 20 µm atmospheric window. The diffraction-limited FWHM is 0.31" at 11.7µm and 0.49" at 18.3 µm, the central 
+							wavelengths of the filters in which the percentiles have been evaluated. Similar values have been found at Gemini North. Note that there is little difference between 
+							the 20%-ile and 70%-ile image quality bins in the N band and no difference between 20%-ile, 70%-ile, and 85%-ile in the Q band. PIs may wish to take this into account before 
+							requesting IQ20 conditions given their low frequency of occurrence.
+						</p>
+						<p>
+							The values in the above table apply to the telescope pointing at zenith. The FWHM percentile boundaries change (increase) with increasing airmass. The performance degradation 
+							away from the zenith can be approximated crudely as `airmass^0.6` in the visible and short wavelength infrared.  The ITC take into account the dependence of image quality on 
+							wavelength (by interpolation) and airmass when calculating signal-to-noise ratios. The exponent is lower and variable in the 10 µm and 20 µm windows; values being used 
+							in the integration time calculators at these wavelengths are uncertain and may be updated. 
+						</p>
+						<a id="skytransparency" href="#skytransparency"> </a>
+						<h3>Sky transparency (cloud cover)</h3>
+						<table class="border tableFormat" style="width: 80%; margin-left: auto; margin-right: auto; font-size:12px">
+							<thead>
+								<tr style="background: rgb(0, 63, 160); color:#FFFFFF" >
+									<th colspan="4">Constraint</th>
+								</tr>
+								<tr style="background: rgb(0, 63, 160); color:#FFFFFF">
+									<th>20%-ile</th>
+									<th>50%-ile</th>
+									<th>80%-ile</th>
+									<th>any (100%-ile)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Cloudless</td>
+									<td>Cloudless</td>
+									<td>Patchy cloud or extened thin cirrus</td>
+									<td>Cloudy, unusuable</td>
+								</tr>
+							</tbody>
+						</table>
+						<p> The percentiles correspond to percentages of the time which have that transparency. 
+						
+							<ul>
+								<li>Cloudless is used for photometry accurate to a few percent in the mid-IR, careful attention must be paid to regular observations of suitable standard stars.</li>
+								<li>Patchy cloud or extended thin cirrus is used for relatively transparent patches, sometimes amongst thicker cloud resulting in some loss in transmission and 
+									variability, or a more uniform covering of thin cloud (usually cirrus). For the purpose of integration time calculation it is assumed that clearer patches 
+									have a transmission that is poorer by 0.3 mag than the nominal atmospheric extinction and that extended cirrus attenuates by no more that 0.3 mag (T~75%).</li>
+								<li>Cloudy is used for a cloud cover over essentially the whole sky. The increase in background makes these conditions unusable at thermal infrared wavelengths, 
+									except perhaps for some very bright targets in high resolution spectroscopic modes. Stable guiding can be difficult in these conditions. </li>
+							</ul>		
+						</p>
+						<a id="skytransWaterVapor" href="#skytransWaterVapor"> </a>
+						<h3>Sky transparency (water vapor)</h3>
+						<p>
+							In the ITC the optical transparency is derived from model transmission spectra.  The transmission spectra used have a wavelength coverage from 6 to 28µm and a resolution 
+							of 1nm (sampled every 0.5nm). Selected spectra are available for 20%-, 50%-, 80%-ile and "any" conditions at an air mass of 1.5. 
+						</p>
+						<table class="border tableFormat" style="width: 80%; margin-left: auto; margin-right: auto; font-size:12px">
+							<thead>
+								<tr style="background: rgb(0, 63, 160); color:#FFFFFF">
+									<th colspan="4">Constraint</th>
+								</tr>
+								<tr style="background: rgb(0, 63, 160); color:#FFFFFF">
+									<th>20%-ile</th>
+									<th>50%-ile</th>
+									<th>80%-ile</th>
+									<th>any (100%-ile)</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>5.0mm</td>
+									<td>7.5mm</td>
+									<td>10.0mm</td>
+									<td>20.0mm</td>									
+								</tr>
+							</tbody>
+						</table>
+						<p>
+							At many wavelengths in the mid-IR, the sky transparency is strongly dependent on the precipitable water vapor 
+							<a href="http://www.gtc.iac.es/instruments/canaricam/MIR.php#Waver_Vapor">water vapor</a>. The water vapor at 
+							the ORM is estimated from the <a href="http://www.iac.es/proyecto/site-testing/index.php?option=com_wrapper&Itemid=122"> PWV real time monitor </a>  managed by the IAC.
+						</p>
+						
+						<a id="skytranswatervapor" href="#skytranswatervapor"> </a>
+						<h3>Airmass</h3>
+						<p>
+							This is the typical air mass, `1 / cos("zenith distance")`, expected during the observation.
+						</p>
+						
+						<table class="border tableFormat" style="width: 80%; margin-left: auto; margin-right: auto; font-size:12px">
+							<thead>
+								<tr style="background: rgb(0, 63, 160); color:#FFFFFF">
+									<th colspan="5">Constraint</th>
+								</tr>
+								<tr style="background: rgb(0, 63, 160); color:#FFFFFF">
+									<th>Airmass</th>
+									<th>1.0</th>
+									<th>1.1</th>
+									<th>1.5</th>
+									<th>2.0</th>
+								</tr>
+							</thead>
+							<tbody>
+								<tr>
+									<td>Elevation (degrees)</td>
+									<td>90</td>
+									<td>65</td>
+									<td>41</td>
+									<td>20</td>									
+								</tr>
+							</tbody>
+						</table>
+						
+						<a id="instTelesConfig"></a>
+						<h2>Instrument and Telescope Configuration</h2>
+						<h3>Optical Properties</h3>
+						<a id="opticalProp"></a>
+						<p>
+							The optical elements of CanariCam (e.g. windows, filters, gratings and slits) are described in detail on the 
+							<a href="http://www.gtc.iac.es/instruments/canaricam/canaricam.php">CanariCam Instrument pages</a>
+						</p>
+						<h3>Spectroscopic Resolution and Sampling</h3>
+						<a id="SpectroscopicResolution"></a>
+						<p>
+							User-defined source spectra can be used instead of the existing template and model SEDs. Note the following restrictions on file format: 
+							<ul>
+								<li>Two space-separated columns: (1) wavelength in nm (2) flux density in arbitrary units. Files can have any number of comment lines, 
+									each starting with the # character, and any number of blank lines.
+								</li>
+								<li>Wavelength interval need not be uniform.</li>
+								<li>Flux density must be in wavelength units (e.g. per nm or per um, but not per Hz).</li>
+								<li>Wavelength range must extend to include the requested normalization filter (or wavelength). For example, a user-defined spectrum 
+									for T-ReCS must extend to below 2000nm if the source brightness is defined in the K-band 
+								</li>
+								<li>File size must be less than 1MB. </li>
+								<li>File name must end in .txt </li>
+							</ul>
+						</p>
+												 
+ 					</div>
+			</div>
+		</div>
+		<div id="bg" class="popup_bg"> </div> 
+		
+	</body>
+</html> 

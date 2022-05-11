@@ -1,0 +1,5 @@
+# Dynamically created version file -- DO NOT REMOVE!
+Package: httpclient
+Version: 2.0-rc2
+Location: http://jakarta.apache.org/commons/httpclient/
+Jar files: commons-httpclient.jar

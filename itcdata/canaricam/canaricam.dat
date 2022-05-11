@@ -1,0 +1,36 @@
+# trecs.dat
+# Parameters for T-ReCS
+# by T. Hayward, 2001 July 24
+# updated by Phil Puxley (i.c.w. Hayward) 2003 April 8 
+# updated by Carlos Alvarez and Francisco Ramos  (Observatory Roque de los Muchachos ) 2014 April 
+
+#name
+CanariCam
+#Starting wavelength (nm)
+1000
+#Ending wavelength (nm)
+28000
+#Sampling (nm)
+2
+#Background filename
+background.dat
+#Plate Scale
+0.08
+#Dark Current per pixel per second
+#As measured with the T-ReCS science-grade array during pre-ship AT
+#(1e6!)
+#50000 
+#Dark current as measured on CanariCam - C. Alvarez and F. Ramos 2014/04/24. Units (e-/s/pix)
+2000000
+#Read Noise
+#As measured with the T-ReCS science-grade array during pre-ship AT
+# Read noise. Shallow Well. Units (e-/ADU)
+1705
+# Read noise. Deep Well. Units (e-/ADU)
+5116
+# GAIN DEEP
+568.5
+# GAIN SHALLOW
+189.5
+# Saturation limit of the  detector
+65000

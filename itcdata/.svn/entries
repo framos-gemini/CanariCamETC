@@ -1,0 +1,55 @@
+8
+
+dir
+8821
+file:///sbase/gcs/REPOSITORY/SVN/gcs/src_java/gtc/CanariCamETC/trunk/itcdata
+file:///sbase/gcs/REPOSITORY/SVN
+
+
+
+2014-11-11T09:56:01.156132Z
+8815
+framos
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+0ae7f082-012e-0410-b5be-ebadfeaca6ec
+
+META-INF
+dir
+
+calc
+dir
+
+sky_emiss
+dir
+
+HI-Res
+dir
+
+imqual
+dir
+
+tele_emiss
+dir
+
+transmission
+dir
+
+sed
+dir
+
+canaricam
+dir
+

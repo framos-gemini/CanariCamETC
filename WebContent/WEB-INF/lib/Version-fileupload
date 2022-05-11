@@ -1,0 +1,5 @@
+# Dynamically created version file -- DO NOT REMOVE!
+Package: fileupload
+Version: 1.0
+Location: http://jakarta.apache.org/commons/fileupload/
+Jar files: commons-fileupload.jar

@@ -1,0 +1,54 @@
+8
+
+dir
+8821
+file:///sbase/gcs/REPOSITORY/SVN/gcs/src_java/gtc/CanariCamETC/trunk/WebContent/META-INF
+file:///sbase/gcs/REPOSITORY/SVN
+
+
+
+2014-11-11T09:56:01.156132Z
+8815
+framos
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+0ae7f082-012e-0410-b5be-ebadfeaca6ec
+
+context.xml
+file
+
+
+
+
+2014-11-11T12:22:52.000000Z
+44bab9139dae47a0ef48175c797a0a1e
+2014-11-11T09:56:01.156132Z
+8815
+framos
+has-props
+
+MANIFEST.MF
+file
+
+
+
+
+2014-11-11T12:22:52.000000Z
+b10f37c8bb1803d98c127a01d1a71cc5
+2014-11-11T09:56:01.156132Z
+8815
+framos
+has-props
+

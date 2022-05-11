@@ -1,0 +1,70 @@
+8
+
+dir
+8821
+file:///sbase/gcs/REPOSITORY/SVN/gcs/src_java/gtc/CanariCamETC/trunk/WebContent/itc/servlets
+file:///sbase/gcs/REPOSITORY/SVN
+
+
+
+2014-11-11T09:56:01.156132Z
+8815
+framos
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+0ae7f082-012e-0410-b5be-ebadfeaca6ec
+
+ITCcanaricam.html
+file
+
+
+
+
+2014-11-11T12:22:49.000000Z
+ad9b34d0577feb486678bbbcafd3c811
+2014-11-11T09:56:01.156132Z
+8815
+framos
+has-props
+
+index.jsp
+file
+
+
+
+
+2014-11-11T12:22:49.000000Z
+e85e64d6c6d939dfe54977e229674757
+2014-11-11T09:56:01.156132Z
+8815
+framos
+has-props
+
+ITChelpAstroSource.html
+file
+
+
+
+
+2014-11-11T12:22:50.000000Z
+23b1192707abbddd2b776cd816b025f0
+2014-11-11T09:56:01.156132Z
+8815
+framos
+has-props
+
+resultView
+dir
+

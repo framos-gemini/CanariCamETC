@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path=""/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/ecs.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/servlet.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/jcpagelayoutK.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/mlibwrapper_jai.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/jaxp.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/jai_core.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/junit.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/jcchartK.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/jconn2.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/jcommon.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/image.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/jxta-uuid.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/dom4j.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/jhall.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/cos.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/log4j.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/util.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/diva.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/jfreechart.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/openorb_tools.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/hcompress.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/jai_codec.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/fits.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/openorb.jar"/>
+	<classpathentry kind="lib" path="/home/framos/workspace/ETC/src/ocs/external/java/lib/jel.jar"/>
+	<classpathentry kind="output" path=""/>
+</classpath>

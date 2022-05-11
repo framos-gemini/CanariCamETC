@@ -1,0 +1,54 @@
+8
+
+dir
+8821
+file:///sbase/gcs/REPOSITORY/SVN/gcs/src_java/gtc/CanariCamETC/trunk/WebContent/itc/servlets/resultView
+file:///sbase/gcs/REPOSITORY/SVN
+
+
+
+2014-11-11T09:56:01.156132Z
+8815
+framos
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+0ae7f082-012e-0410-b5be-ebadfeaca6ec
+
+SpectroscopyAndPolimetry.jsp
+file
+
+
+
+
+2014-11-11T12:22:48.000000Z
+926dfec2776aec3c9e4c8a54a778ebdc
+2014-11-11T09:56:01.156132Z
+8815
+framos
+has-props
+
+ImagingAndPolimetry.jsp
+file
+
+
+
+
+2014-11-11T12:22:49.000000Z
+620a0e8b68da92bf4d088b8fa0e4401e
+2014-11-11T09:56:01.156132Z
+8815
+framos
+has-props
+

@@ -1,0 +1,31 @@
+# image quality model for ITC
+
+# "any" conditions, with PWFS, zenith pointing
+
+# columns are (1) wavelength in nm, (2) 50% encircled energy diameter
+
+# source: advertised tip-tilt models, with 300nm and
+# 20um points guesses
+
+# author: Phil Puxley
+# created 23Nov1999
+
+# added guess of 30um point for mid-IR ITC
+
+# Modification: Carlos Alvarez and Fran Ramos (2014/07/05).
+# The ITC code indicates that FWHM must be used instead of EED50.
+# Therefore the following values represent the statistical
+# FWHM in the Si2-8.7, Si5-11.6 and Q1-17.65 filters using
+# actual measurements on standard stars. The Si2-8.7 filter
+# FWHM values have been obtained from 98 measurements from the
+# CanariCam ESO-GTC program (dates between December 2012 and March 2014). 
+# The Si5-11.6 and Q1-17.65 data have been obtained from 144 
+# measurements in Si/Q ratio standard stars (dates between 
+# June 2011 and May 2014).   
+
+3400   0.86
+8700   0.86
+11600  1.16
+17650  1.06
+20000  1.06
+30000  1.06

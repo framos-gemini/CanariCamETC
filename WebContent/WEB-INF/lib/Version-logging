@@ -1,0 +1,5 @@
+# Dynamically created version file -- DO NOT REMOVE!
+Package: logging
+Version: 1.0.3
+Location: http://jakarta.apache.org/commons/logging/
+Jar files: commons-logging.jar

@@ -1,0 +1,89 @@
+8
+
+dir
+8821
+file:///sbase/gcs/REPOSITORY/SVN/gcs/src_java/gtc/CanariCamETC/trunk/WebContent/itc/jQuery
+file:///sbase/gcs/REPOSITORY/SVN
+
+
+
+2014-11-11T09:56:01.156132Z
+8815
+framos
+
+
+svn:special svn:externals svn:needs-lock
+
+
+
+
+
+
+
+
+
+
+
+0ae7f082-012e-0410-b5be-ebadfeaca6ec
+
+demo.js
+file
+
+
+
+
+2014-11-11T12:22:40.000000Z
+cb6e35b9c7e4aaee34cc104e91924b6e
+2014-11-11T09:56:01.156132Z
+8815
+framos
+
+ASCIIMathML.js
+file
+
+
+
+
+2014-11-11T12:22:40.000000Z
+2d0f96771f6449790bc44b57f878d56b
+2014-11-11T09:56:01.156132Z
+8815
+framos
+
+jquery-2.1.0.js
+file
+
+
+
+
+2014-11-11T12:22:40.000000Z
+3177091fb9705dd978689ba11bf0609a
+2014-11-11T09:56:01.156132Z
+8815
+framos
+
+css
+dir
+
+jscrollpane
+dir
+
+bootstrap
+dir
+
+ui
+dir
+
+jquery-1.9.0.js
+file
+
+
+
+
+2014-11-11T12:22:40.000000Z
+f3346149a7173e70d39e6f36bfb178a4
+2014-11-11T09:56:01.156132Z
+8815
+framos
+has-props
+

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<!-- This file configures the "itc" web application servlets.  It
+     maps the names used in the URL's to the internal classnames.  
+     Initialization can also be done here.
+     
+<!DOCTYPE web-app
+    PUBLIC "-//Sun Microsystems, Inc.//DTD Web Application 2.2//EN"
+    "http://java.sun.com/j2ee/dtds/web-app_2.2.dtd">
+-->
+<web-app >
+ 
+    <!-- This maps /servlet/canaricam to the CanariCam servlet class -->
+    <servlet>
+        <servlet-name>
+           canaricam
+        </servlet-name>
+        <servlet-class>
+            edu.gemini.itc.canaricam.ITCCanariCamServlet
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+		<servlet-name>canaricam</servlet-name>
+		<url-pattern>/servlet/canaricam</url-pattern>
+	</servlet-mapping>
+	
+	<servlet>
+        <servlet-name>
+           partialresult
+        </servlet-name>
+        <servlet-class>
+            edu.gemini.itc.shared.PartialResult
+        </servlet-class>
+    </servlet>
+    <servlet-mapping>
+		<servlet-name>partialresult</servlet-name>
+		<url-pattern>/servlet/partialresult</url-pattern>
+	</servlet-mapping>
+	 
+	 <servlet>
+	 	<servlet-name>
+            acqcam
+        </servlet-name>
+        <servlet-class>
+            edu.gemini.itc.acqcam.ITCacqCamServlet
+        </servlet-class>
+     </servlet>   
+     <servlet-mapping>
+		<servlet-name>acqcam</servlet-name>
+		<url-pattern>/servlet/acqcam</url-pattern>
+	</servlet-mapping>
+
+    <!-- This maps /servlet/images to the image servlet class -->
+    <servlet>
+        <servlet-name>
+            images
+        </servlet-name>
+        <servlet-class>
+            edu.gemini.itc.shared.ImageServlet
+        </servlet-class>
+    </servlet>
+	 <servlet-mapping>
+		<servlet-name>images</servlet-name>
+		<url-pattern>/servlet/images</url-pattern>
+	</servlet-mapping>
+	
+	
+	<servlet>
+        <servlet-name>getfile</servlet-name>
+        <servlet-class>edu.gemini.itc.shared.FileServlet</servlet-class>
+    </servlet>
+	 <servlet-mapping>
+		<servlet-name>getfile</servlet-name>
+		<url-pattern>/servlet/getfile</url-pattern>
+	</servlet-mapping>
+
+</web-app>

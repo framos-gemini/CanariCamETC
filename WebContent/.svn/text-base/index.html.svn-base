@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+<head>
+   <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
+   <meta name="Author" content="Kim Gillies">
+   <meta name="GENERATOR" content="Mozilla/4.6 [en] (X11; U; SunOS 5.7 sun4u) [Netscape]">
+   <title>ITC Test Access</title>
+</head>
+<body bgcolor="#FFFFFF">
+<b><font size=+4>Integration Time Calculator Easy Access
+Test Page DEVELOPMENT SERVER</font></b><b><font size=+4></font></b>
+<p>Each ITC can be started from here.&nbsp; The link in the right column
+is the name of the HTML&nbsp;file that provides the user interface to the
+specific ITC.&nbsp; It should be located in the directory itc/servlets.
+<p>Edit this file ("itc/html/index.html")&nbsp;to add a new test line.
+<br>&nbsp;
+<br>&nbsp;
+<table BORDER COLS=2 WIDTH="100%" NOSAVE >
+<tr ALIGN=CENTER BGCOLOR="#66FF99" NOSAVE>
+<td NOSAVE>Name of ITC</td>
+
+<td>Test File</td>
+</tr>
+<!--
+<tr NOSAVE>
+<td NOSAVE>Acquisition Camera</td>
+
+<td><img SRC="execute.gif" ALT="execute.gif" height=24 width=24 align=CENTER>
+<a href="itc/servlets/ITCacqCam.html">ITCacqCam.html</a></td>
+</tr>
+
+<tr>
+<td>NIRI</td>
+
+<td><img SRC="execute.gif" ALT="execute.gif" height=24 width=24 align=CENTER>
+<a href="itc/servlets/ITCniri.html">ITCniri.html</a></td>
+
+</tr>
+
+<tr>
+<td>NIRI (with Altair Support)</td>
+
+
+<td><img SRC="execute.gif" ALT="execute.gif" height=24 width=24 align=CENTER>
+<a href="itc/servlets/ITCaltairNiri.html">ITCaltairNiri.html</a></td>
+
+</tr>
+
+<tr>
+<td>GMOS</td>
+
+<td><img SRC="execute.gif" ALT="execute.gif" height=24 width=24 align=CENTER>
+<a href="itc/servlets/ITCgmos.html">ITCgmos.html</a></td>
+</tr>
+
+<tr>
+<td>GNIRS</td>
+
+<td><img SRC="execute.gif" ALT="execute.gif" height=24 width=24 align=CENTER>
+<a href="itc/servlets/ITCgnirs.html">ITCgnirs.html</a></td>
+</tr>
+-->
+<tr>
+<td>CanariCam</td>
+
+<td><img SRC="execute.gif" ALT="execute.gif" height=24 width=24 align=CENTER>
+<a href="itc/servlets/ITCcanaricam.html">ITCcanaricam.html</a></td>
+</tr>
+<!--
+<tr>
+<td>Michelle</td>
+
+<td><img SRC="execute.gif" ALT="execute.gif" height=24 width=24 align=CENTER>
+<a href="itc/servlets/ITCmichelle.html">ITCmichelle.html</a></td>
+</tr>
+-->
+</table>
+
+</body>
+</html>
